@@ -1,0 +1,38 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.group-list {
+  .group-box {
+    width: 280px;
+    float: left;
+    margin: 10px 6px 10px 0;
+    position: relative;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+    .group-title {
+      line-height: 30px;
+      padding: 6px 9px;
+      .title-label {
+        margin: 0;
+      }
+    }
+    .group-description {
+      margin-left: 10px;
+      height: 60px;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+    .group-post-count {
+      span {
+        float: right;
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}

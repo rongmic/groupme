@@ -1,0 +1,7 @@
+<h2>Create Group</h2>
+<%= simple_form_for @group, html: { multipart: true }, defaults: { input_html: 'form-control' } do |f| %>
+  <%= f.input :title, label: "Group title" %>
+  <%= f.input :description, as: :text, label: "Group description", wrapper: :horizontal %>
+  <%= f.input :image, as: :file %>
+  <%= f.submit 'New Group', class: 'btn btn-primary btn-lg' %>
+<% end %>
