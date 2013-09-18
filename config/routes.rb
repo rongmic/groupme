@@ -6,7 +6,9 @@ Groupme::Application.routes.draw do
   # root 'welcome#index'
   root 'pages#welcome'
 
-  resources :groups
+  resources :groups do
+    resources :topics
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

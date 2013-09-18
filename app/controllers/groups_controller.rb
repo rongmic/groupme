@@ -20,6 +20,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @topics = @group.topics.order('created_at desc')
+    @topic = @group.topics.build
   end
 
   private

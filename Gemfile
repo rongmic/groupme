@@ -32,12 +32,14 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'simple_form'
+gem 'simple_form', git: 'git://github.com/plataformatec/simple_form.git'
 
 # Carrierwave for upload images
 gem 'carrierwave'
 
 gem 'rmagick'
+
+gem 'rails-timeago', '~> 2.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

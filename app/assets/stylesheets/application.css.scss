@@ -21,3 +21,14 @@ img {
   vertical-align: middle;
   border: 0;
 }
+
+p {
+  font-size: 15px;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+

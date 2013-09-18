@@ -1,0 +1,45 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Home", root_path %>
+  <li><%= link_to @group.title, group_path(@group) %></li>
+  <li>Topic</li>
+</ol>
+
+<div class="row group-content">
+  <div class="col-sm-9">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#group-info" data-toggle="tab"><%= @group.title %></a></li>
+      <li><a href="#links" data-toggle="tab">links</a></li>
+    </ul>
+    <div id="group-tab" class="tab-content">
+      <div class="tab-pane active" id="group-info">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="topic">
+                  <div class="topic-body">
+                    <div class="topic-content">
+                      <%= @topic.content %>
+                    </div>
+                    <div class="topic-meta">
+                      <span class="topic-timestamp">
+                        <%= link_to (timeago_tag @topic.created_at).to_s, group_topic_path(@group, @topic) %>
+                      </span>
+                      <span class="topic-like">
+                        <%= link_to '' do %>
+
+                        <% end %>
+                      </span>
+                    </div>
+                    <div class="topic-comments">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="tab-pane" id="links">
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>
+</div>
