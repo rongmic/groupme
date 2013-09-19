@@ -3,7 +3,21 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :groups
   has_many :topics
+  has_many :group_users
+  has_many :participated_groups, through: :group_users, source: :group
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable
+
+  def join!(group)
+    participated_groups << group
+  end
+
+  def quit!(group)
+    participated_groups.delete(group)
+  end
+
+  def is_member_of?(group)
+    participated_groups.include?(group)
+  end
 end

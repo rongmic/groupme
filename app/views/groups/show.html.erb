@@ -12,22 +12,24 @@
     </ul>
     <div id="group-tab" class="tab-content">
       <div class="tab-pane active" id="group-info">
-        <div class="alert alert-info">
-          <h4>Join “<%= @group.title %>” now and post!</h4>
-          <p>Join the group now to post things and reply to posts. Enjoy the convenience of browsing post archives easily, and get the full list of links that are ever posted in this group.</p>
-          <div class="">
-            <%= link_to "Join the group", "", :"data-method" => "post", class: "btn btn-primary btn-lg" %>
+        <% if current_user && current_user.is_member_of?(@group) %>
+          <div class="col-md-12">
+            <div class="topic-form clearfix">
+              <%= simple_form_for [@group, @topic], defaults: {input_html: {class: 'form-control'}} do |f| %>
+                <%= f.input :content, as: :text, required: true, input_html: {rows: 4} %>
+                <%= f.submit "Submit", disable_with: "Submiting...", class: 'btn btn-primary pull-right' %>
+              <% end %>
+            </div>
           </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="topic-form clearfix">
-            <%= simple_form_for [@group, @topic], defaults: {input_html: {class: 'form-control'}} do |f| %>
-              <%= f.input :content, as: :text, required: true, input_html: {rows: 4} %>
-              <%= f.submit "Submit", disable_with: "Submiting...", class: 'btn btn-primary pull-right' %>
-            <% end %>
+        <% else %>
+          <div class="alert alert-info">
+            <h4>Join “<%= @group.title %>” now and post!</h4>
+            <p>Join the group now to post things and reply to posts. Enjoy the convenience of browsing post archives easily, and get the full list of links that are ever posted in this group.</p>
+            <div class="">
+              <%= link_to "Join the group", join_group_path(@group), method: "post", class: "btn btn-primary btn-lg" %>
+            </div>
           </div>
-        </div>
+        <% end %>
         <% if @topics.any? %>
           <% @topics.each do |topic| %>
             <div class="row">
@@ -42,11 +44,11 @@
                         <%= link_to (timeago_tag topic.created_at).to_s, group_topic_path(@group, topic) %>
                       </span>
                       <% if topic.user == current_user %>
-                      <span class="topic-remove">
-                        <%= link_to group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                          <span class="glyphicon glyphicon-trash"></span> Delete
-                        <% end %>
-                      </span>
+                        <span class="topic-remove">
+                          <%= link_to group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                            <span class="glyphicon glyphicon-trash"></span> Delete
+                          <% end %>
+                        </span>
                       <% end %>
                       <span class="topic-like">
                         <%= link_to '' do %>
@@ -74,9 +76,11 @@
   </div>
   <div class="group-sidebar col-md-3">
     <div class="sidebar-section">
-      <h4>Owner</h4>
+      <h4>Members</h4>
       <div class="well">
-        <%= @group.owner.username %>
+        <% @group.members.each do |member| %>
+          <%= member.username %>
+        <% end %>
       </div>
     </div>
     <div class="sidebar-section">
@@ -87,10 +91,16 @@
     </div>
     <div class="sidebar-section">
     </div>
+    <% if current_user %>
     <% if @group.owner == current_user %>
-    <div class="sidebar-section">
-      <%= link_to "Dismiss Group", group_path(@group), method: :delete, data: { confirm: "Are you sure to delete the group?" }, class: 'btn btn-danger' %>
-    </div>
+      <div class="sidebar-section">
+        <%= link_to "Dismiss Group", group_path(@group), method: :delete, data: { confirm: "Are you sure to delete the group?" }, class: 'btn btn-danger' %>
+      </div>
+    <% elsif current_user.is_member_of?(@group) %>
+      <%= link_to "Quit Group", quit_group_path(@group), method: :post, data: { confirm: "Are you sure to quit the group?" }, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to "Join", join_group_path, method: :post, class: 'btn btn-primary' %>
+    <% end %>
     <% end %>
   </div>
 </div>

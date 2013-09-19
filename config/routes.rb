@@ -9,6 +9,11 @@ Groupme::Application.routes.draw do
 
   resources :groups do
     resources :topics
+
+    member do
+      post :join
+      post :quit
+    end
   end
 
   # Example of regular route:
