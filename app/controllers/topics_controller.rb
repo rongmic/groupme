@@ -1,9 +1,11 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :destroy]
+  before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
 
   def create
     @group = Group.find(params[:group_id])
     @topic = @group.topics.new(topic_params)
+    @topic.user = current_user
 
     if @topic.save
       redirect_to group_path(@group)
@@ -16,6 +18,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
+    @topic = current_user.topics.find(params[:id])
     group = @topic.group
     if @topic.destroy
       flash[:success] = "Topic has been deleted successfully."

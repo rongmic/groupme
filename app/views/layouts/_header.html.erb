@@ -15,8 +15,19 @@
         <li><%= link_to "Create Group", new_group_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Signup", new_user_registration_path %></li>
-        <li><%= link_to "Signin", new_user_session_path %></li>
+      <% if current_user %>
+        <li id="fat-menu" class="dropdown">
+              <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                <li role="presentation"><%= link_to "My Groups", "" %></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+     <% else %>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+      <% end %>
       </ul>
     </div>
   </div>

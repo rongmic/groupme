@@ -41,11 +41,13 @@
                       <span class="topic-timestamp">
                         <%= link_to (timeago_tag topic.created_at).to_s, group_topic_path(@group, topic) %>
                       </span>
+                      <% if topic.user == current_user %>
                       <span class="topic-remove">
                         <%= link_to group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } do %>
                           <span class="glyphicon glyphicon-trash"></span> Delete
                         <% end %>
                       </span>
+                      <% end %>
                       <span class="topic-like">
                         <%= link_to '' do %>
                           <span class="glyphicon glyphicon-heart-empty"></span> Like
@@ -72,6 +74,12 @@
   </div>
   <div class="group-sidebar col-md-3">
     <div class="sidebar-section">
+      <h4>Owner</h4>
+      <div class="well">
+        <%= @group.owner.username %>
+      </div>
+    </div>
+    <div class="sidebar-section">
       <h4>Description</h4>
       <div class="well">
         <%= @group.description %>
@@ -79,8 +87,10 @@
     </div>
     <div class="sidebar-section">
     </div>
+    <% if @group.owner == current_user %>
     <div class="sidebar-section">
-      <%= link_to "Delete Group", group_path(@group), method: :delete, data: { confirm: "Are you sure to delete the group?" }, class: 'btn btn-danger' %>
+      <%= link_to "Dismiss Group", group_path(@group), method: :delete, data: { confirm: "Are you sure to delete the group?" }, class: 'btn btn-danger' %>
     </div>
+    <% end %>
   </div>
 </div>

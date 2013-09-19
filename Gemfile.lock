@@ -152,7 +152,7 @@ DEPENDENCIES
   anjlab-bootstrap-rails (>= 3.0.0.0)
   carrierwave
   coffee-rails (~> 4.0.0)
-  devise
+  devise (~> 3.0)
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.0)
