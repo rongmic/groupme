@@ -35,6 +35,12 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="topic">
+                  <div class="topic-avatar">
+                    <%= link_to '', class: 'thumbnail' do %>
+                      <%= image_tag 'default-avatar.jpg' %>
+                    <% end %>
+                    <%= link_to topic.user.username, '', class: 'topic-user' %>
+                  </div>
                   <div class="topic-body">
                     <div class="topic-content">
                       <%= topic.content %>
@@ -55,6 +61,11 @@
                           <span class="glyphicon glyphicon-heart-empty"></span> Like
                         <% end %>
                       </span>
+                      <span clas="topic-reply">
+                        <%= link_to '#' do %>
+                          <span class="glyphicon glyphicon-comment"></span> Reply
+                        <% end %>
+                      </span>
                       <span class="topic-share">
                         <%= link_to '' do %>
                           <span class="glyphicon glyphicon-share-alt"></span> Share
@@ -62,36 +73,70 @@
                       </span>
                     </div>
                     <div class="topic-comments">
+                      <div class="comment-list clearfix">
+                        <% if topic.comments.any? %>
+                          <% topic.comments.each do |comment| %>
+                            <div class="group comment-box">
+                              <div class="comment-avatar">
+                                <%= link_to '', class: 'thumbnail' do %>
+                                  <%= image_tag 'default-avatar.jpg' %>
+                                <% end %>
+                              </div>
+                              <div class="comment-body">
+                                <h4 class="comment-user"><%= link_to comment.user.username, '' %></h4>
+                                <div class="comment-content">
+                                  <%= comment.content %>
+                                </div>
+                                <div class="comment-meta">
+                                  <span class="comment-timestamp"><%= (timeago_tag comment.created_at).to_s %>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="comment-form">
+                      <div class="comment-avatar">
+                        <%= link_to '', class: 'thumbnail' do %>
+                          <%= image_tag 'default-avatar.jpg' %>
+                        <% end %>
+                      </div>
+                      <%= simple_form_for [topic, @comment], defaults: {input_html: {class: 'form-control'}} do |f| %>
+                        <%= f.input 'content', as: :text, required: true, label: false %>
+                        <%= f.submit %>
+                      <% end %>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <% end %>
+          </div>
         <% end %>
-      </div>
-      <div class="tab-pane" id="links">
-      </div>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="links">
     </div>
   </div>
-  <div class="group-sidebar col-md-3">
-    <div class="sidebar-section">
-      <h4>Members</h4>
-      <div class="well">
-        <% @group.members.each do |member| %>
-          <%= member.username %>
-        <% end %>
-      </div>
+</div>
+<div class="group-sidebar col-md-3">
+  <div class="sidebar-section">
+    <h4>Members</h4>
+    <div class="well">
+      <% @group.members.each do |member| %>
+        <%= member.username %>
+      <% end %>
     </div>
-    <div class="sidebar-section">
-      <h4>Description</h4>
-      <div class="well">
-        <%= @group.description %>
-      </div>
+  </div>
+  <div class="sidebar-section">
+    <h4>Description</h4>
+    <div class="well">
+      <%= @group.description %>
     </div>
-    <div class="sidebar-section">
-    </div>
-    <% if current_user %>
+  </div>
+  <div class="sidebar-section">
+  </div>
+  <% if current_user %>
     <% if @group.owner == current_user %>
       <div class="sidebar-section">
         <%= link_to "Dismiss Group", group_path(@group), method: :delete, data: { confirm: "Are you sure to delete the group?" }, class: 'btn btn-danger' %>
@@ -101,6 +146,6 @@
     <% else %>
       <%= link_to "Join", join_group_path, method: :post, class: 'btn btn-primary' %>
     <% end %>
-    <% end %>
-  </div>
+  <% end %>
+</div>
 </div>

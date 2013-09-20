@@ -7,6 +7,8 @@ Groupme::Application.routes.draw do
   # root 'welcome#index'
   root 'pages#welcome'
 
+  # resources :users
+
   resources :groups do
     resources :topics
 
@@ -14,6 +16,10 @@ Groupme::Application.routes.draw do
       post :join
       post :quit
     end
+  end
+
+  resources :topics do
+    resources :comments
   end
 
   # Example of regular route:

@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @topics = @group.topics.order('created_at desc')
     @topic = @group.topics.build
+    @comment = @topic.comments.build
   end
 
   def join

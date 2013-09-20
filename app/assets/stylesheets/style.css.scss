@@ -1,6 +1,32 @@
-* {
-  border-radius: 0;
+.navbar {
+  background: #2c3742;
+  border-color: #2c3742;
+  .navbar-nav {
+    li {
+      a {
+        color: #FFF;
+        font-weight: bold;
+        &:hover {
+          color: #CCC;
+        }
+      }
+    }
+  }
 }
 
-body {
+/*
+a {
+  color: #1abc9c;
+  text-decoration: none;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
 }
+
+a:hover {
+  color: #2ecc71;
+  text-decoration: none;
+}
+*/
