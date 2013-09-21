@@ -133,6 +133,12 @@
     </div>
   </div>
   <div class="sidebar-section">
+    <h4>Rules</h4>
+    <div class="well">
+      <%= @group.rules %>
+    </div>
+  </div>
+  <div class="sidebar-section">
   </div>
   <% if current_user %>
     <% if @group.owner == current_user %>

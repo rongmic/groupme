@@ -8,6 +8,7 @@
 <%= simple_form_for @group, defaults: { input_html: {class: 'form-control'}}, html: { multipart: true, :class => 'form-horizontal' } do |f| %>
   <%= f.input :title, label: "Group title", required: true %>
   <%= f.input :description, as: :text, label: "Group description", input_html: {rows: 5} %>
+  <%= f.input :rules, as: :text, label: "Group rules", input_html: {rows: 5} %>
   <%= f.input :image, as: :file %>
   <%= f.submit 'New Group', disable_with: 'Submiting...', class: 'btn btn-primary btn-lg' %>
 <% end %>
