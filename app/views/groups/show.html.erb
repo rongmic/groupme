@@ -37,7 +37,7 @@
                 <div class="topic">
                   <div class="topic-avatar">
                     <%= link_to '', class: 'thumbnail' do %>
-                      <%= image_tag 'default-avatar.jpg' %>
+                      <%= image_tag topic.user.avatar_url || 'default-avatar.jpg' %>
                     <% end %>
                     <%= link_to topic.user.username, '', class: 'topic-user' %>
                   </div>
