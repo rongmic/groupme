@@ -77,7 +77,7 @@
                             <div class="group comment-box">
                               <div class="comment-avatar">
                                 <%= link_to '', class: 'thumbnail' do %>
-                                  <%= image_tag comment.user.avatar_url || 'default-avatar.jpg' %>
+                                  <%= image_tag gravatar_for(comment.user) %>
                                 <% end %>
                               </div>
                               <div class="comment-body">
@@ -124,7 +124,7 @@
     <h4>Members</h4>
     <div class="member-list clearfix">
       <% @group.members.each do |member| %>
-        <%= image_tag member.avatar_url || 'default-avatar.jpg' %>
+        <%= image_tag gravatar_for(member) %>
       <% end %>
     </div>
   </div>
