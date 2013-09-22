@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to group_path @group
+      redirect_to group_path @topic.group
     else
     end
   end
