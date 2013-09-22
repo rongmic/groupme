@@ -1,0 +1,4 @@
+$('form[data-remote=true]').bind('ajax:success', function(){
+  $(this).parent().prev('.comment-list').append($('<%= j render 'shared/comment', comment: @comment %>').hide().fadeIn(1000));
+  this.reset()
+});

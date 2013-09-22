@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     respond_to do |format|
-      if true || @comment.save
+      if @comment.save
         format.js
         format.html { redirect_to group_path @topic.group }
       else

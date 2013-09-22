@@ -86,7 +86,8 @@
                                   <%= comment.content %>
                                 </div>
                                 <div class="comment-meta">
-                                  <span class="comment-timestamp"><%= (timeago_tag comment.created_at).to_s %>
+                                  <span class="comment-timestamp">
+                                    <%= (timeago_tag comment.created_at).to_s %>
                                 </span>
                               </div>
                             </div>
@@ -96,16 +97,16 @@
                     </div>
                     <% if logined? %>
                       <div id="topic-comment-<%= topic.id %>" class="comment-form collapse">
-                      <div class="comment-avatar">
-                        <%= link_to '', class: 'thumbnail' do %>
-                          <%= image_tag current_user.avatar_url || 'default-avatar.jpg' %>
+                        <div class="comment-avatar">
+                          <%= link_to '', class: 'thumbnail' do %>
+                            <%= image_tag current_user.avatar_url || 'default-avatar.jpg' %>
+                          <% end %>
+                        </div>
+                        <%= simple_form_for [topic, @comment], remote: true, defaults: {input_html: {class: 'form-control'}} do |f| %>
+                          <%= f.input 'content', as: :text, required: true, label: false %>
+                          <%= f.submit disable_with: 'submitting...' %>
                         <% end %>
                       </div>
-                      <%= simple_form_for [topic, @comment], remote: true, defaults: {input_html: {class: 'form-control'}} do |f| %>
-                        <%= f.input 'content', as: :text, required: true, label: false %>
-                        <%= f.submit %>
-                      <% end %>
-                    </div>
                     <% end %>
                   </div>
                 </div>
