@@ -1,6 +1,12 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.group-main {
+  background-color: #FFF;
+  .nav-tabs {
+    margin-top: 20px;
+  }
+}
 .group-list {
   .group-box {
     margin-bottom: 10px;
@@ -84,8 +90,14 @@
           }
         }
         .comment-list {
-          .comment-timestamp {
-            color: #828282;
+          .comment-box {
+            padding: 8px;
+            .comment-content {
+              margin-bottom: 1em;
+            }
+            .comment-timestamp {
+              color: #828282;
+            }
           }
         }
         .comment-body {

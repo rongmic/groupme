@@ -5,7 +5,7 @@
 </ol>
 
 <div class="row group-content">
-  <div class="col-sm-9">
+  <div class="col-md-9 group-main">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#group-info" data-toggle="tab"><%= @group.title %></a></li>
       <li><a href="#links" data-toggle="tab">links</a></li>
@@ -60,8 +60,8 @@
                         <% end %>
                       </span>
                       <span class="topic-reply">
-                        <%= link_to 'javascript:;', :"data-toggle" => "collapse", :"data-target" => "#topic-comment-#{topic.id}" do %>
-                          <span class="glyphicon glyphicon-comment"></span> Reply
+                        <%= link_to 'javascript:;', :"data-toggle" => "collapse", :"data-count" => "#{topic.comments_count}", :"data-target" => "#topic-comment-#{topic.id}" do %>
+                          <span class="glyphicon glyphicon-comment"></span> Reply (<span class="comments-count"><%= topic.comments_count %></span>)
                         <% end %>
                       </span>
                       <span class="topic-share">
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="comment-meta">
                                   <span class="comment-timestamp">
-                                    <%= (timeago_tag comment.created_at).to_s %>
+                                    commented at <%= (timeago_tag comment.created_at).to_s %>
                                 </span>
                               </div>
                             </div>
