@@ -1,0 +1,20 @@
+<div class="group comment-box">
+  <div class="comment-avatar">
+    <%= link_to '', class: 'thumbnail' do %>
+      <%= image_tag gravatar_for @comment.user %>
+    <% end %>
+  </div>
+  <div class="comment-body">
+    <h4 class="comment-user"><%= link_to @comment.user.username, '' %></h4>
+    <div class="comment-content">
+      <%= @comment.content %>
+    </div>
+    <div class="comment-meta">
+      <span class="comment-timestamp">
+        commented at <%= (timeago_tag @comment.created_at).to_s %>,
+        <%= link_to 'delete', '' %>
+      </span>
+    </div>
+  </div>
+</div>
+

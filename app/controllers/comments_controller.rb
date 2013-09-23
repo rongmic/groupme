@@ -13,6 +13,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    group = @comment.topic.group
+
+    respond_to do |format|
+      if @comment.destroy
+        format.html { redirect_to group_path(group) }
+        format.js
+      end
+    end
+  end
+
   private
 
   def comment_params

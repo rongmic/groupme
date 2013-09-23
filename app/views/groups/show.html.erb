@@ -54,27 +54,33 @@
                           <% end %>
                         </span>
                       <% end %>
+                      <% if logined? %>
                       <span class="topic-like">
                         <%= link_to '' do %>
                           <span class="glyphicon glyphicon-heart-empty"></span> Like
                         <% end %>
                       </span>
+                      <% if current_user.is_member_of?(@group) %>
                       <span class="topic-reply">
-                        <%= link_to 'javascript:;', :"data-toggle" => "collapse", :"data-count" => "#{topic.comments_count}", :"data-target" => "#topic-comment-#{topic.id}" do %>
+                        <%= link_to 'javascript:;', class: 'reply', :"data-toggle" => "collapse", :"data-count" => "#{topic.comments_count}", :"data-target" => "#topic-comment-#{topic.id}" do %>
                           <span class="glyphicon glyphicon-comment"></span> Reply (<span class="comments-count"><%= topic.comments_count %></span>)
                         <% end %>
                       </span>
+                      <% end %>
+                      <% end %>
+                      <!-->
                       <span class="topic-share">
-                        <%= link_to '' do %>
+                        <% link_to '' do %>
                           <span class="glyphicon glyphicon-share-alt"></span> Share
                         <% end %>
                       </span>
+                      <!-->
                     </div>
                     <div class="topic-comments">
                       <div class="comment-list clearfix">
                         <% if topic.comments.any? %>
                           <% topic.comments.each do |comment| %>
-                            <div class="group comment-box">
+                            <div class="group comment-box" id="<%= dom_id comment %>">
                               <div class="comment-avatar">
                                 <%= link_to '', class: 'thumbnail' do %>
                                   <%= image_tag gravatar_for(comment.user) %>
@@ -88,6 +94,9 @@
                                 <div class="comment-meta">
                                   <span class="comment-timestamp">
                                     commented at <%= (timeago_tag comment.created_at).to_s %>
+                                  <% if comment.user == current_user %>
+                                  , <%= link_to 'delete', topic_comment_path(topic, comment), remote: true, method: 'delete', data: { confirm: "Are you sure?" } %>
+                              <% end %>
                                 </span>
                               </div>
                             </div>
@@ -99,7 +108,7 @@
                       <div id="topic-comment-<%= topic.id %>" class="comment-form collapse">
                         <div class="comment-avatar">
                           <%= link_to '', class: 'thumbnail' do %>
-                            <%= image_tag current_user.avatar_url || 'default-avatar.jpg' %>
+                            <%= image_tag gravatar_for(current_user) %>
                           <% end %>
                         </div>
                         <%= simple_form_for [topic, @comment], remote: true, defaults: {input_html: {class: 'form-control'}} do |f| %>
