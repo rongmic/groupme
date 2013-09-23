@@ -1,4 +1,4 @@
 //$('<%# j render partial: 'shared/comment', locals: { comment: @comment } %>').appendTo('.comment-list').hide().fadeIn(1000);
 var topic_id = '<%= @comment.topic.id %>';
-$('#topic-comment-'+topic_id).prev('.comment-list')
+$('#topic-comment-'+topic_id).closest('.topic-comments').find('.comment-list')
     .append($('<%= j render 'shared/comment', comment: @comment %>').hide().fadeIn(1000));

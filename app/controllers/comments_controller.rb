@@ -15,11 +15,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = current_user.comments.find(params[:id])
-    group = @comment.topic.group
+    @topic = @comment.topic
 
     respond_to do |format|
       if @comment.destroy
-        format.html { redirect_to group_path(group) }
+        format.html { redirect_to group_path(@topic.group) }
         format.js
       end
     end

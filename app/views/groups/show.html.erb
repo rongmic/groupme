@@ -79,7 +79,7 @@
                     <div class="topic-comments">
                       <div class="comment-list clearfix">
                         <% if topic.comments.any? %>
-                          <% topic.comments.each do |comment| %>
+                          <% topic.comments.more.each do |comment| %>
                             <div class="group comment-box" id="<%= dom_id comment %>">
                               <div class="comment-avatar">
                                 <%= link_to '', class: 'thumbnail' do %>
@@ -104,6 +104,9 @@
                         <% end %>
                       <% end %>
                     </div>
+                    <% if comments_more?(topic.comments) %>
+                    <div class="comments-more"><%= link_to "more comments", '' %></div>
+                  <% end %>
                     <% if logined? %>
                       <div id="topic-comment-<%= topic.id %>" class="comment-form collapse">
                         <div class="comment-avatar">
