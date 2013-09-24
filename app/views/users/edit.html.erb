@@ -7,15 +7,20 @@
   <div class="col-md-9 group-main">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-      <li><a href="#links" data-toggle="tab">New password</a></li>
+      <li><a href="#password" data-toggle="tab">New password</a></li>
     </ul>
     <div id="group-tab" class="tab-content">
       <div class="tab-pane active" id="profile">
-        <%= simple_form_for @user do |f| %>
+        <%= simple_form_for @user, wrapper: :login, defaults: {label_html: {class: "col-lg-2"}, input_html: {class: "form-control"}} do |f| %>
+          <%= f.input :username, disabled: true %>
+          <%= f.input :email, disabled: true %>
           <%= f.input :avatar, as: :file %>
           <%= f.submit %>
         <% end %>
       </div>
+    </div>
+    <div class="tab-pane" id="password">
+      <%# render "devise/passwords/edit" %>
     </div>
   </div>
 </div>

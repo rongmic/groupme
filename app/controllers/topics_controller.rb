@@ -8,9 +8,10 @@ class TopicsController < ApplicationController
     @topic.user = current_user
 
     if @topic.save
-      redirect_to group_path(@group)
     else
+      flash[:success] = "content required"
     end
+    redirect_to group_path(@group)
   end
 
   def show

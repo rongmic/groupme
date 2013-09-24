@@ -120,7 +120,7 @@ SimpleForm.setup do |config|
     # b.wrapper tag: :div do |ba|
     b.use :input
     b.use :hint,  wrap_with: { tag: :p, class: "help-block" }
-    # b.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
+    b.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
     # end
   end
 
