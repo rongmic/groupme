@@ -1,3 +1,4 @@
+<% title @group.title %>
 <ol class="breadcrumb">
   <li><%= link_to "Home", root_path %>
   <li><%= link_to "Groups", groups_path %></li>
@@ -47,7 +48,7 @@
                       <span class="topic-timestamp">
                         <%= link_to (timeago_tag topic.created_at).to_s, group_topic_path(@group, topic) %>
                       </span>
-                      <% if topic.user == current_user %>
+                      <% if author?(topic) %>
                         <span class="topic-remove">
                           <%= link_to group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } do %>
                             <span class="glyphicon glyphicon-trash"></span> Delete
@@ -55,11 +56,17 @@
                         </span>
                       <% end %>
                       <% if logined? %>
-                      <span class="topic-like">
-                        <%= link_to '' do %>
-                          <span class="glyphicon glyphicon-heart-empty"></span> Like
-                        <% end %>
-                      </span>
+                        <span class="topic-like">
+                          <% if liked?(topic) %>
+                            <%= link_to "javascript:;", onclick: "return Topics.like(this)", remote: true, method: :delete, :"data-id" => topic.id, :"data-state" => "liked", class: 'likeable' do %>
+                              <span class="glyphicon glyphicon-heart"></span> Like
+                            <% end %>
+                          <% else %>
+                            <%= link_to "javascript:;", onclick: "return Topics.like(this)", remote: true, method: :post, :"data-id" => topic.id, :"data-state" => "", class: 'likeable' do %>
+                              <span class="glyphicon glyphicon-heart-empty"></span> Like
+                            <% end %>
+                          <% end %>
+                        </span>
                       <% if current_user.is_member_of?(@group) %>
                       <span class="topic-reply">
                         <%= link_to 'javascript:;', class: 'reply', :"data-toggle" => "collapse", :"data-count" => "#{topic.comments_count}", :"data-target" => "#topic-comment-#{topic.id}" do %>
@@ -156,7 +163,7 @@
   <div class="sidebar-section">
   </div>
   <% if current_user %>
-    <% if @group.owner == current_user %>
+    <% if owner?(@group) %>
       <div class="sidebar-section">
         <%= link_to "Dismiss Group", group_path(@group), method: :delete, data: { confirm: "Are you sure to delete the group?" }, class: 'btn btn-danger' %>
       </div>

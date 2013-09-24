@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :login_required, only: [:new, :create, :edit, :update, :destroy, :join, :quit]
 
   def index
-    @groups = Group.all
+    @groups = Group.paginate(page: params[:page]).order('created_at desc')
   end
 
   def new

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :participated_groups, through: :group_users, source: :group
   has_many :comments
+  has_many :likes
+  has_many :liked_topics, through: :likes, source: :topic
 
   mount_uploader :avatar, ImageUploader
 
@@ -23,4 +25,13 @@ class User < ActiveRecord::Base
   def is_member_of?(group)
     participated_groups.include?(group)
   end
+
+  def like(topic)
+    liked_topics << topic
+  end
+
+  def dislike(topic)
+    liked_topics.delete(topic)
+  end
+
 end

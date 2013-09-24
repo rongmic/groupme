@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :destroy]
+  before_action :set_topic, only: [:show, :destroy, :like, :dislike]
   before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
 
   def create

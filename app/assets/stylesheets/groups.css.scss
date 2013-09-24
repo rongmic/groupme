@@ -52,8 +52,6 @@
     border-bottom: 1px solid #EEE;
     .topic-avatar {
       float: left;
-      width: 74px;
-      height: 74px;
       text-align: center;
       .thumbnail {
         img {
@@ -65,7 +63,7 @@
       }
     }
     .topic-body {
-      margin-left: 83px;
+      margin-left: 74px;
       .topic-content {
         padding: 16px 30px;
         margin-bottom: 5px;
@@ -78,8 +76,6 @@
         .comment-list, .comment-form {
           margin-top: 20px;
           .comment-avatar {
-            width: 58px;
-            height: 58px;
             float: left;
             .thumbnail {
               img {
@@ -101,7 +97,11 @@
           }
         }
         .comment-body {
-          margin-left: 67px;
+          margin-left: 58px;
+          .comment-user {
+            margin-top: 0;
+            font-size: 16px;
+          }
         }
         .comment-form {
           form {

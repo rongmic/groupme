@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923052357) do
+ActiveRecord::Schema.define(version: 20130924022901) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20130923052357) do
     t.integer  "topics_count", default: 0
     t.integer  "user_id"
     t.text     "rules"
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "topics", force: true do |t|

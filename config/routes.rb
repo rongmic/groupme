@@ -21,6 +21,7 @@ Groupme::Application.routes.draw do
   resources :topics do
     resources :comments
   end
+    resources :likes
 
   resources :users
 

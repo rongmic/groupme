@@ -1,7 +1,8 @@
 body {
-  background: #F9F9F9;
+  background: #F7F7F7;
   .content {
-    // background: #FFF;
+    background: #FFF;
+    padding: 20px;
   }
 }
 
@@ -20,6 +21,10 @@ body {
       }
     }
   }
+}
+
+.thumbnail {
+  padding: 0;
 }
 
 .form-horizontal .form-group {
