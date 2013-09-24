@@ -90,6 +90,25 @@ SimpleForm.setup do |config|
 
   # When false, do not use translations for labels, hints or placeholders.
   # config.translate = true
+
+  config.wrappers :default, class: :input, hint_class: :field_with_hint, error_class: :field_with_errors do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+
+    # Calculates min and max from length validations for numeric inputs
+    b.optional :min_max
+
+    # Calculates readonly automatically from readonly attributes
+    b.optional :readonly
+
+    ## Inputs
+    b.use :label_input
+    b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :error, wrap_with: { tag: :span, class: :error }
+  end
+
   config.wrappers :bootstrap, tag: :div, class: "form-group", error_class: "has-error" do |b|
 
     # Form extensions
@@ -101,10 +120,26 @@ SimpleForm.setup do |config|
     # b.wrapper tag: :div do |ba|
     b.use :input
     b.use :hint,  wrap_with: { tag: :p, class: "help-block" }
-    b.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
+    # b.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
     # end
+  end
+
+  config.wrappers :login, tag: :div, class: "form-group", error_class: "has-error" do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.use :input, wrap_with: { tag: :div, class: "col-lg-10" }
+    b.use :hint, wrap_with: { tag: :p, class: "help-block" }
+    b.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
   end
 
   config.form_class = "form-horizontal"
   config.default_wrapper = :bootstrap
+
+  config.boolean_style = :nested
+  config.button_class = 'btn'
+  config.error_notification_tag = :div
+  config.error_notification_class = 'alert alert-error'
+  config.label_class = 'control-label'
+  config.browser_validations = false
 end
