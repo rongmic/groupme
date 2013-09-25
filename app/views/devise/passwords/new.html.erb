@@ -1,15 +1,16 @@
-<h2>Forgot your password?</h2>
+<div class="session-panel">
+  <div class="row">
+    <div class="col-lg-offset-4 col-md-4">
+      <h4>Forgot your password?</h4>
 
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
+      <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }, wrapper: :bootstrap, defaults: {label_html: {class: "col-lg-2"}, input_html: {class: "col-lg-10 form-control"}}) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :email, :required => true, :autofocus => true %>
+        <%= f.button :submit, "Send me reset password instructions" %>
+      <% end %>
+      <div class="link">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
