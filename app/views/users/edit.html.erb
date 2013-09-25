@@ -1,21 +1,22 @@
 <ol class="breadcrumb">
-  <li><%= link_to "Home", root_path %>
-  <li class="active">Profile</li>
+  <li><%= link_to t("common.home"), root_path %>
+  <li><%= link_to current_user.username, user_path(current_user) %>
+  <li class="active"><%= t("common.profile") %></li>
 </ol>
 
 <div class="row group-content">
   <div class="col-md-9 group-main">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-      <li><a href="#password" data-toggle="tab">New password</a></li>
+      <li class="active"><a href="#profile" data-toggle="tab"><%= t("common.profile") %></a></li>
+      <li><a href="#password" data-toggle="tab"><%= t("common.new_password") %></a></li>
     </ul>
     <div id="group-tab" class="tab-content">
       <div class="tab-pane active" id="profile">
         <%= simple_form_for @user, wrapper: :login, defaults: {label_html: {class: "col-lg-2"}, input_html: {class: "form-control"}} do |f| %>
-          <%= f.input :username, disabled: true %>
-          <%= f.input :email, disabled: true %>
-          <%= f.input :avatar, as: :file %>
-          <%= f.submit %>
+          <%= f.input :username, disabled: true, required: false, label: t("attributes.user.username") %>
+          <%= f.input :email, disabled: true, label: t("attributes.user.email") %>
+          <%= f.input :avatar, as: :file, label: t("attributes.user.avatar") %>
+          <%= f.submit t("common.update_profile"), class: "btn btn-success" %>
         <% end %>
       </div>
     </div>

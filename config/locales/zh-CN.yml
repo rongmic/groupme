@@ -9,6 +9,7 @@
       email: "邮箱"
       password: "密码"
       password_confirmation: "确认密码"
+      avatar: "头像"
     group:
       member: "小组成员"
       description: "描述"

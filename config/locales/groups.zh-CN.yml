@@ -1,2 +1,4 @@
 "zh-CN":
   groups:
+    join: "加入小组"
+    quit: "退出小组"
