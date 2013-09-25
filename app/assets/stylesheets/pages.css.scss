@@ -1,3 +1,21 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.category-group {
+  margin-top: 20px;
+  padding: 10px 30px;
+  border: 1px solid #ccc;
+  table {
+    th {
+      text-align: center;
+    }
+    margin: 0;
+    .category {
+      label {
+        font-weight: normal;
+      }
+      text-align: right;
+      color: #999;
+    }
+  }
+}
