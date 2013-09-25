@@ -19,6 +19,9 @@ body {
 .navbar-custom {
   padding: 4px 0;
 }
+.nav > li > a:hover, .nav > li > a:focus {
+  background: none;
+}
 .navbar {
   background: none repeat scroll 0 0 #FBFBFB;
   border-bottom: 2px solid #EEE;
