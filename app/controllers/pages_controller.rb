@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
-  def welcome
+  def index
+    @categories = Category.all
   end
 end

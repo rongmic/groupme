@@ -5,9 +5,12 @@ Groupme::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'pages#welcome'
+  root 'pages#index'
 
   # resources :users
+  resources :categories do
+    resources :groups
+  end
 
   resources :groups do
     resources :topics

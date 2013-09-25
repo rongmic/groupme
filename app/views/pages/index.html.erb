@@ -1,0 +1,53 @@
+<div id="carousel-example-generic" class="carousel slide">
+  <!-- Indicators -->
+  <!--
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+  -->
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag "banner.jpg" %>
+      <div class="carousel-caption">
+        adfasdf
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</div>
+
+<div class="category-group">
+  <table class="table">
+    <thead>
+      <th><span class="glyphicon glyphicon-list"></span> Groups by Category</th>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-lg-2 category">
+              <label><%= category.name %></label>
+            </div>
+            <div class="col-lg-10 groups">
+              <% category.groups.preview.each do |group| %>
+                <%= link_to group.title, group_path(group), :"data-no-turbolink" => true, :"data-content" => group.description %>&nbsp;&nbsp;
+            <% end %>
+            <%= link_to "[ more ]", category_groups_path(category) %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>

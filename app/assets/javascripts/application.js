@@ -17,3 +17,12 @@
 //= require rails-timeago-all
 //= require turbolinks
 //= require_tree .
+
+var do_on_load = function() { 
+  $(".groups a").popover({
+    placement: 'left',
+    trigger: 'hover'
+  });
+}
+$(document).ready(do_on_load);
+$(window).bind('page:change', do_on_load);

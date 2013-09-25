@@ -6,4 +6,7 @@ class Topic < ActiveRecord::Base
   has_many :likers, through: :likes, source: :user
 
   validates :content, presence: true
+
+  scope :hot, -> { order("topics_count desc") }
+  scope :without_comments, ->{ order("topics_count == 0") }
 end

@@ -2,7 +2,12 @@ class GroupsController < ApplicationController
   before_action :login_required, only: [:new, :create, :edit, :update, :destroy, :join, :quit]
 
   def index
-    @groups = Group.paginate(page: params[:page]).order('created_at desc')
+    if params[:category_id].nil?
+      @groups = Group.paginate(page: params[:page]).order("created_at desc")
+    else
+    @category = Category.find(params[:category_id])
+    @groups = @category.groups.paginate(page: params[:page]).order('created_at desc')
+    end
   end
 
   def new
