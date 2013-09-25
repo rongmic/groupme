@@ -1,0 +1,20 @@
+"zh-CN":
+  common:
+    home: "首页"
+    register: "注册"
+    login: "登录"
+    logining: "登录中..."
+    forget_password: "忘记了密码？"
+    create_account: "创建新用户"
+    create: "创建"
+    search_group: "搜索小组"
+    what: "Groupme是什么？"
+    description: "它是一个根据小组着重于话题讨论的应用。"
+    more: "了解更多！"
+    dashboard: "个人主页"
+    profile: "资料设置"
+    logout: "退出"
+
+  menu:
+    groups: "发现小组"
+    create_group: "创建小组"

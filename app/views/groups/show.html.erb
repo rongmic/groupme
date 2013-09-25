@@ -1,7 +1,7 @@
 <% title @group.title %>
 <ol class="breadcrumb">
-  <li><%= link_to "Home", root_path %>
-  <li><%= link_to "Groups", groups_path %></li>
+  <li><%= link_to t("breadcrumb.home"), root_path %>
+  <li><%= link_to @group.category.name, category_groups_path(@group.category) %></li>
   <li class="active"><%= @group.title %></li>
 </ol>
 
@@ -46,7 +46,7 @@
                     </div>
                     <div class="topic-meta">
                       <span class="topic-timestamp">
-                        <%= link_to (timeago_tag topic.created_at).to_s, group_topic_path(@group, topic) %>
+                        <%= link_to (timeago_script_tag).to_s, group_topic_path(@group, topic) %>
                       </span>
                       <% if author?(topic) %>
                         <span class="topic-remove">
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="comment-meta">
                                   <span class="comment-timestamp">
-                                    commented at <%= (timeago_tag comment.created_at).to_s %>
+                                    commented at <%= (timeago_script_tag).to_s %>
                                   <% if comment.user == current_user %>
                                   , <%= link_to 'delete', topic_comment_path(topic, comment), remote: true, method: 'delete', data: { confirm: "Are you sure?" } %>
                               <% end %>

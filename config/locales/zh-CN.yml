@@ -1,0 +1,15 @@
+"zh-CN":
+  breadcrumb:
+    home: "首页"
+    category: "分类"
+    group: "小组"
+  attributes:
+    user:
+      username: "用户名"
+      email: "邮箱"
+      password: "密码"
+      password_confirmation: "确认密码"
+    group:
+      member: "小组成员"
+      description: "描述"
+      rules: "规则"

@@ -1,5 +1,7 @@
 // Simplified Chinese
-jQuery.timeago.settings.strings = {
+(function() {
+
+jQuery.timeago.settings.strings["zh-CN"] = {
   prefixAgo: null,
   prefixFromNow: "从现在开始",
   suffixAgo: "之前",
@@ -18,3 +20,5 @@ jQuery.timeago.settings.strings = {
   numbers: [],
   wordSeparator: ""
 };
+
+}).call(this);

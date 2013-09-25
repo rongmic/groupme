@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <span><strong>What is groupme?</strong> Beerkeg concen­trates on topics and elabo­rate your discussions. <a href="#">Learn more</a></span>
+        <span><strong><%=t("common.what") %></strong> <%= t("common.description") %> <a href="#"><%= t("common.more") %></a></span>
         </div>
       </div>
   </div>
@@ -19,30 +19,31 @@
     </div>
     <div class="navbar-collapse collapse" style="height: 1px;">
       <ul class="nav navbar-nav">
-        <li><a href="#">What is it?</a></li>
-        <li><%= link_to "Browse Groups", groups_path %></li>
-        <li><%= link_to "Create Group", new_group_path %></li>
+        <li><%= link_to t("common.home"), root_path %></li>
+        <li><%= link_to t("menu.groups"), groups_path %></li>
+        <li><%= link_to t("menu.create_group"), new_group_path %></li>
+        <li><a href="#"><%= t("common.what") %></a></li>
       </ul>
       <form class="navbar-form">
         <div class="input-group input-group-sm pull-left col-md-3">
           <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-          <input type="text" class="form-control" placeholder="Search Group">
+          <input type="text" class="form-control" placeholder="<%=t("common.search_group")%>">
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li id="fat-menu" class="dropdown">
-            <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+            <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-              <li><%= link_to 'Dashboard', user_path(current_user) %></li>
-              <li role="presentation"><%= link_to "Profile", edit_user_path(current_user) %></li>
+              <li><%= link_to t("common.dashboard"), user_path(current_user) %></li>
+              <li role="presentation"><%= link_to t("common.profile"), edit_user_path(current_user) %></li>
               <li role="presentation" class="divider"></li>
-              <li role="presentation"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+              <li role="presentation"><%= link_to t("common.logout"), destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to t("common.register"), new_user_registration_path %></li>
+          <li><%= link_to t("common.login"), new_user_session_path %></li>
         <% end %>
       </ul>
     </div>

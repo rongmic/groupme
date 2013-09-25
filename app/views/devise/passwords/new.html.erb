@@ -1,11 +1,11 @@
 <div class="session-panel">
   <div class="row">
     <div class="col-lg-offset-4 col-md-4">
-      <h4>Forgot your password?</h4>
+      <h4><%= t("common.forget_password") %></h4>
 
       <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }, wrapper: :bootstrap, defaults: {label_html: {class: "col-lg-2"}, input_html: {class: "col-lg-10 form-control"}}) do |f| %>
         <%= f.error_notification %>
-        <%= f.input :email, :required => true, :autofocus => true %>
+        <%= f.input :email, :required => true, :autofocus => true, label: t("attributes.user.email") %>
         <%= f.button :submit, "Send me reset password instructions" %>
       <% end %>
       <div class="link">

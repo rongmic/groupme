@@ -1,9 +1,18 @@
 <% title "Group Lists" %>
 <ol class="breadcrumb">
-  <li><%= link_to "Home", root_path %></li>
-  <li class="active">Groups</li>
-  </ol>
-<h3>All Groups</h3>
+  <li><%= link_to t("breadcrumb.home"), root_path %></li>
+  <% if @category %>
+    <li><%= link_to t("breadcrumb.category"), root_path %></li>
+    <li class="active">
+      <%= @category.name %>
+    </li>
+  <% else %>
+    <li class="active">
+      <%= t('breadcrumb.group') %>
+    </li>
+  <% end %>
+</ol>
+
 <div class="row group-list">
   <div class="col-md-12">
     <% @groups.each do |group| %>
