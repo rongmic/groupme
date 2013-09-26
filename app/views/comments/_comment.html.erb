@@ -1,0 +1,21 @@
+<div class="group comment-box" id="<%= dom_id comment %>">
+  <div class="comment-avatar">
+    <%= link_to '', class: 'thumbnail' do %>
+      <%= image_tag gravatar_for(comment.user) %>
+    <% end %>
+  </div>
+  <div class="comment-body">
+    <h4 class="comment-user"><%= link_to comment.user.username, '' %></h4>
+    <div class="comment-content">
+      <%= comment.content %>
+    </div>
+    <div class="comment-meta">
+      <span class="comment-timestamp">
+        <%= raw timeago(comment.created_at).concat t("comments.commented_at") %>
+        <% if comment.user == current_user %>
+          , <%= link_to t("common.delete"), topic_comment_path(topic, comment), remote: true, method: 'delete', data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>

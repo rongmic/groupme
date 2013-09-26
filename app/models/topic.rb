@@ -2,7 +2,7 @@ class Topic < ActiveRecord::Base
   belongs_to :user
   belongs_to :group, counter_cache: true
   has_many :comments, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
 
   validates :content, presence: true

@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="topic">
+      <div class="topic-avatar">
+        <%= link_to '', class: 'thumbnail' do %>
+          <%= image_tag gravatar_for(topic.user, options: {size: "64"}) %>
+        <% end %>
+        <%= link_to topic.user.username, '', class: 'topic-user' %>
+      </div>
+      <div class="topic-body">
+        <div class="topic-content">
+          <%= topic.content %>
+        </div>
+        <div class="topic-meta">
+          <span class="topic-timestamp">
+            <%= link_to raw(timeago(topic.created_at)), topic, title: topic.created_at %>
+          </span>
+          <% if author?(topic) %>
+            <span class="topic-remove">
+              <%= link_to group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-trash"></span> <%= t("comments.delete") %>
+              <% end %>
+            </span>
+          <% end %>
+          <% if logined? %>
+            <span class="topic-like">
+              <% if liked?(topic) %>
+                <%= link_to "javascript:;", onclick: "return Topics.like(this)", remote: true, method: :delete, :"data-id" => topic.id, :"data-state" => "liked", class: 'likeable' do %>
+                  <span class="glyphicon glyphicon-heart"></span> <span class="text"><%= t("topics.dislike") %></span>
+                <% end %>
+              <% else %>
+                <%= link_to "javascript:;", onclick: "return Topics.like(this)", remote: true, method: :post, :"data-id" => topic.id, :"data-state" => "", class: 'likeable' do %>
+                  <span class="glyphicon glyphicon-heart-empty"></span> <span class="text"><%= t("topics.like") %></span>
+                <% end %>
+              <% end %>
+            </span>
+            <% if current_user.is_member_of?(@group) %>
+              <span class="topic-reply">
+                <%= link_to 'javascript:;', class: 'reply', :"data-toggle" => "collapse", :"data-count" => "#{topic.comments_count}", :"data-target" => "#topic-comment-#{topic.id}" do %>
+                  <span class="glyphicon glyphicon-comment"></span> <%= t("topics.reply") %> (<span class="comments-count"><%= topic.comments_count %></span>)
+                <% end %>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="topic-comments">
+          <div class="comment-list clearfix">
+            <%= render partial: "comments/comment", collection: topic.comments, locals: {topic: topic} %>
+          </div>
+          <% if comments_more?(topic.comments) %>
+            <div class="comments-more"><%= link_to "more comments", '' %></div>
+          <% end %>
+          <% if logined? %>
+            <%= render partial: "comments/new_comment", locals: {topic: topic} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

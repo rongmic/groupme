@@ -22,11 +22,13 @@ window.Topics =
 
   setLiked : (el) ->
     $(el).data("state":"liked").attr("title","dislike")
-    $('span', el).attr("class", "glyphicon glyphicon-heart")
+    $('span.glyphicon', el).attr("class", "glyphicon glyphicon-heart")
+    $('span.text', el).text("取消喜欢")
 
   setNotLiked : (el) ->
     $(el).data("state":"").attr("title","like")
-    $('span', el).attr("class", "glyphicon glyphicon-heart-empty")
+    $('span.glyphicon', el).attr("class", "glyphicon glyphicon-heart-empty")
+    $('span.text', el).text("喜欢")
 
 
 

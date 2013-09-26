@@ -1,7 +1,10 @@
+<% title @topic.content %>
+
 <ol class="breadcrumb">
-  <li><%= link_to "Home", root_path %>
+  <li><%= link_to t("breadcrumb.home"), root_path %>
+  <li><%= link_to @group.category.name, category_path(@group.category) %>
   <li><%= link_to @group.title, group_path(@group) %></li>
-  <li>Topic</li>
+  <li><%= t("breadcrumb.topic") %></li>
 </ol>
 
 <div class="row group-content">
@@ -15,25 +18,7 @@
 
             <div class="row">
               <div class="col-md-12">
-                <div class="topic">
-                  <div class="topic-body">
-                    <div class="topic-content">
-                      <%= @topic.content %>
-                    </div>
-                    <div class="topic-meta">
-                      <span class="topic-timestamp">
-                        <%= link_to (timeago_tag @topic.created_at).to_s, group_topic_path(@group, @topic) %>
-                      </span>
-                      <span class="topic-like">
-                        <%= link_to '' do %>
-
-                        <% end %>
-                      </span>
-                    </div>
-                    <div class="topic-comments">
-                    </div>
-                  </div>
-                </div>
+                <%= render "topics/topic", topic: @topic %>
               </div>
             </div>
       </div>

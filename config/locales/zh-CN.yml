@@ -4,6 +4,7 @@
     category: "分类"
     group: "小组"
     new_group: "新建小组"
+    topic: "话题"
   attributes:
     user:
       username: "用户名"

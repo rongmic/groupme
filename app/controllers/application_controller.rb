@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+  def error_404
+    render text: 404
+  end
+
   protected
 
   def login_required

@@ -16,12 +16,13 @@ class TopicsController < ApplicationController
 
   def show
     @group = @topic.group
+    @comment = Comment.new
   end
 
   def destroy
     @topic = current_user.topics.find(params[:id])
     group = @topic.group
-    if @topic.destroy
+    if  @topic.destroy
       flash[:success] = "Topic has been deleted successfully."
       redirect_to group_path group
     else

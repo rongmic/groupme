@@ -1,0 +1,11 @@
+<div id="topic-comment-<%= topic.id %>" class="comment-form collapse">
+  <div class="comment-avatar">
+    <%= link_to '', class: 'thumbnail' do %>
+      <%= image_tag gravatar_for(current_user) %>
+    <% end %>
+  </div>
+  <%= simple_form_for [topic, @comment], remote: true, defaults: {input_html: {class: 'form-control'}} do |f| %>
+    <%= f.input 'content', as: :text, required: true, label: false %>
+    <%= f.submit t("comments.create_comment"), disable_with: 'submitting...' %>
+  <% end %>
+</div>

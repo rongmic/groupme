@@ -9,7 +9,6 @@
   <div class="col-md-9 group-main">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#group-info" data-toggle="tab"><%= @group.title %></a></li>
-      <li><a href="#links" data-toggle="tab">links</a></li>
     </ul>
     <div id="group-tab" class="tab-content">
       <div class="tab-pane active" id="group-info">
@@ -29,116 +28,16 @@
             </div>
           </div>
         <% end %>
-        <% if @topics.any? %>
-          <% @topics.each do |topic| %>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="topic">
-                  <div class="topic-avatar">
-                    <%= link_to '', class: 'thumbnail' do %>
-                      <%= image_tag gravatar_for(topic.user, options: {size: "64"}) %>
-                    <% end %>
-                    <%= link_to topic.user.username, '', class: 'topic-user' %>
-                  </div>
-                  <div class="topic-body">
-                    <div class="topic-content">
-                      <%= topic.content %>
-                    </div>
-                    <div class="topic-meta">
-                      <span class="topic-timestamp">
-                        <%= link_to raw(timeago(topic.created_at)), topic, title: topic.created_at %>
-                      </span>
-                      <% if author?(topic) %>
-                        <span class="topic-remove">
-                          <%= link_to group_topic_path(@group, topic), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                            <span class="glyphicon glyphicon-trash"></span> <%= t("comments.delete") %>
-                          <% end %>
-                        </span>
-                      <% end %>
-                      <% if logined? %>
-                        <span class="topic-like">
-                          <% if liked?(topic) %>
-                            <%= link_to "javascript:;", onclick: "return Topics.like(this)", remote: true, method: :delete, :"data-id" => topic.id, :"data-state" => "liked", class: 'likeable' do %>
-                              <span class="glyphicon glyphicon-heart"></span> <%= t("topics.dislike") %>
-                            <% end %>
-                          <% else %>
-                            <%= link_to "javascript:;", onclick: "return Topics.like(this)", remote: true, method: :post, :"data-id" => topic.id, :"data-state" => "", class: 'likeable' do %>
-                              <span class="glyphicon glyphicon-heart-empty"></span> <%= t("topics.like") %>
-                            <% end %>
-                          <% end %>
-                        </span>
-                      <% if current_user.is_member_of?(@group) %>
-                      <span class="topic-reply">
-                        <%= link_to 'javascript:;', class: 'reply', :"data-toggle" => "collapse", :"data-count" => "#{topic.comments_count}", :"data-target" => "#topic-comment-#{topic.id}" do %>
-                          <span class="glyphicon glyphicon-comment"></span> <%= t("topics.reply") %> (<span class="comments-count"><%= topic.comments_count %></span>)
-                        <% end %>
-                      </span>
-                      <% end %>
-                      <% end %>
-                      <!-->
-                      <span class="topic-share">
-                        <% link_to '' do %>
-                          <span class="glyphicon glyphicon-share-alt"></span> Share
-                        <% end %>
-                      </span>
-                      <!-->
-                    </div>
-                    <div class="topic-comments">
-                      <div class="comment-list clearfix">
-                        <% if topic.comments.any? %>
-                          <% topic.comments.more.each do |comment| %>
-                            <div class="group comment-box" id="<%= dom_id comment %>">
-                              <div class="comment-avatar">
-                                <%= link_to '', class: 'thumbnail' do %>
-                                  <%= image_tag gravatar_for(comment.user) %>
-                                <% end %>
-                              </div>
-                              <div class="comment-body">
-                                <h4 class="comment-user"><%= link_to comment.user.username, '' %></h4>
-                                <div class="comment-content">
-                                  <%= comment.content %>
-                                </div>
-                                <div class="comment-meta">
-                                  <span class="comment-timestamp">
-                                  <%= raw timeago(comment.created_at).concat t("comments.commented_at") %>
-                                  <% if comment.user == current_user %>
-                                    , <%= link_to t("common.delete"), topic_comment_path(topic, comment), remote: true, method: 'delete', data: { confirm: "Are you sure?" } %>
-                              <% end %>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        <% end %>
-                      <% end %>
-                    </div>
-                    <% if comments_more?(topic.comments) %>
-                    <div class="comments-more"><%= link_to "more comments", '' %></div>
-                  <% end %>
-                    <% if logined? %>
-                      <div id="topic-comment-<%= topic.id %>" class="comment-form collapse">
-                        <div class="comment-avatar">
-                          <%= link_to '', class: 'thumbnail' do %>
-                            <%= image_tag gravatar_for(current_user) %>
-                          <% end %>
-                        </div>
-                        <%= simple_form_for [topic, @comment], remote: true, defaults: {input_html: {class: 'form-control'}} do |f| %>
-                          <%= f.input 'content', as: :text, required: true, label: false %>
-                          <%= f.submit t("comments.create_comment"), disable_with: 'submitting...' %>
-                        <% end %>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="tab-pane" id="links">
+        <div class="topics">
+          <% if @topics.any? %>
+            <%= render partial: "topics/topic", collection: @topics %>
+          <% end %>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
-<div class="group-sidebar col-md-3">
-  <%= render 'shared/sidebar_for_group' %>
+  <div class="group-sidebar col-md-3">
+    <%= render 'shared/sidebar_for_group' %>
+  </div>
 </div>
