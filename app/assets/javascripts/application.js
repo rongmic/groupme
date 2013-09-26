@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require rails-timeago
-//= require rails-timeago-all
+//= require jquery.timeago
+//= require jquery.timeago-settings
 //= require turbolinks
 //= require_tree .
 
@@ -23,6 +23,7 @@ var do_on_load = function() {
     placement: 'left',
     trigger: 'hover'
   });
+  jQuery("abbr.timeago").timeago();
 }
 $(document).ready(do_on_load);
 $(window).bind('page:change', do_on_load);

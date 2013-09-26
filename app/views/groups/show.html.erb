@@ -46,7 +46,7 @@
                     </div>
                     <div class="topic-meta">
                       <span class="topic-timestamp">
-                        <%= link_to (timeago_script_tag).to_s, group_topic_path(@group, topic) %>
+                        <%= link_to raw(timeago(topic.created_at)), topic, title: topic.created_at %>
                       </span>
                       <% if author?(topic) %>
                         <span class="topic-remove">
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="comment-meta">
                                   <span class="comment-timestamp">
-                                  <%= t("comments.commented_at") %> <%= (timeago_script_tag).to_s %>
+                                  <%= raw timeago(comment.created_at).concat t("comments.create") %>
                                   <% if comment.user == current_user %>
                                   , <%= link_to 'delete', topic_comment_path(topic, comment), remote: true, method: 'delete', data: { confirm: "Are you sure?" } %>
                               <% end %>

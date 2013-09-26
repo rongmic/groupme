@@ -39,8 +39,6 @@ gem 'carrierwave'
 
 gem 'rmagick'
 
-gem 'rails-timeago', '~> 2.0'
-
 gem 'devise', '~> 3.0'
 
 gem 'will_paginate-bootstrap'
