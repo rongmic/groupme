@@ -1,4 +1,9 @@
 "zh-CN":
   groups:
+    new: "创建"
     join: "加入小组"
     quit: "退出小组"
+    dismiss: "解散小组"
+    create_group: "创建新小组"
+    select_category: "请选择一个分类"
+    recommend_group: "热门小组"

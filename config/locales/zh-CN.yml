@@ -3,6 +3,7 @@
     home: "首页"
     category: "分类"
     group: "小组"
+    new_group: "新建小组"
   attributes:
     user:
       username: "用户名"
@@ -10,7 +11,11 @@
       password: "密码"
       password_confirmation: "确认密码"
       avatar: "头像"
+      created_at: "注册时间"
     group:
+      title: "小组名称"
+      category: "分类"
+      image: "标志图片"
       member: "小组成员"
       description: "描述"
       rules: "规则"

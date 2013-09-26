@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   # will_paginate config
   self.per_page = 8
+  $recommend_count = 2
 
   belongs_to :category
   belongs_to :owner, class_name: "User", foreign_key: :user_id
@@ -23,5 +24,13 @@ class Group < ActiveRecord::Base
 
   def join_owner_to_group
     members << owner
+  end
+
+  def self.recommend(count = '')
+    Group.order("topics_count desc").limit($recommend_count)
+  end
+
+  def self.latest_groups(user)
+    user.groups.order('created_at desc').limit(10)
   end
 end

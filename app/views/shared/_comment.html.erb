@@ -11,8 +11,8 @@
     </div>
     <div class="comment-meta">
       <span class="comment-timestamp">
-        commented at <%= (timeago_tag @comment.created_at).to_s %>,
-        <%= link_to 'delete', topic_comment_path(@topic, @comment), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+        <%= (timeago @comment.created_at).to_s.concat t("comments.commented_at") %>,
+        <%= link_to t("common.delete"), topic_comment_path(@topic, @comment), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
       </span>
     </div>
   </div>

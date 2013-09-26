@@ -4,7 +4,7 @@
 .group-main {
   background-color: #FFF;
   .nav-tabs {
-    margin-top: 20px;
+    // margin-top: 20px;
   }
 }
 .group-list {
@@ -120,9 +120,11 @@
 .topic-content {
   background: #F6F8F9;
   border: 2px solid #E8EBED;
+  border-radius: 6px;
 }
 
 .sidebar-section {
+  margin-bottom: 5px;
   .member-list {
     img {
       float: left;
@@ -130,5 +132,13 @@
       width: 40px;
       height: 40px;
     }
+  }
+}
+
+.group-item {
+  height: 160px;
+  img {
+    max-width: 146px;
+    max-height: 109px;
   }
 }

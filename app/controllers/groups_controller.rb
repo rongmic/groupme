@@ -12,11 +12,13 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @categories = Category.all
+    @recommend_groups = Group.recommend
+    @recommend_topics = Topic.recommend
   end
 
   def create
     @group = current_user.groups.build(group_params)
-
     if @group.save
       redirect_to groups_path
     else
@@ -59,6 +61,6 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:title, :description, :rules, :image)
+    params.require(:group).permit(:title, :description, :rules, :image, :category_id)
   end
 end

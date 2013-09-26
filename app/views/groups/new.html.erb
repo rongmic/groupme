@@ -1,14 +1,34 @@
 <ol class="breadcrumb">
-  <li><%= link_to "Home", root_path %></li>
-  <li><%= link_to "Groups", groups_path %></li>
-  <li class="active">New Group</li>
-  </ol>
-
-<h2>New Group</h2>
-<%= simple_form_for @group, defaults: { input_html: {class: 'form-control'}}, html: { multipart: true, :class => 'form-horizontal' } do |f| %>
-  <%= f.input :title, label: "Group title", required: true %>
-  <%= f.input :description, as: :text, label: "Group description", input_html: {rows: 5} %>
-  <%= f.input :rules, as: :text, label: "Group rules", input_html: {rows: 5} %>
-  <%= f.input :image, as: :file %>
-  <%= f.submit 'New Group', disable_with: 'Submiting...', class: 'btn btn-primary btn-lg' %>
-<% end %>
+  <li><%= link_to t("breadcrumb.home"), root_path %></li>
+  <li><%= link_to t("breadcrumb.group"), groups_path %></li>
+  <li class="active"><%=t("breadcrumb.new_group") %></li>
+</ol>
+<div class="row">
+  <div class="col-md-9">
+    <div class="group-content">
+      <ul class="nav nav-tabs">
+        <li class="active"><%= link_to t("groups.create_group"), "#new-group", :"data-toggle" => "tab" %></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="new-group">
+          <%= simple_form_for @group, defaults: { input_html: {class: 'form-control'}}, html: { multipart: true, :class => 'form-horizontal' } do |f| %>
+            <%= f.input :title, label: t("attributes.group.title"), required: true %>
+            <%= f.input :category_id, collection: @categories, prompt: t("groups.select_category"), label: t("attributes.group.category"), required: true %>
+            <%= f.input :description, as: :text, label: t("attributes.group.description"), input_html: {rows: 5} %>
+            <%= f.input :rules, as: :text, label: t("attributes.group.rules"), input_html: {rows: 5} %>
+            <%= f.input :image, as: :file, label: t("attributes.group.image") %>
+            <%= f.submit t("groups.new"), disable_with: 'Submiting...', class: 'btn btn-primary btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="sidebar-section">
+      <h4><%= t("groups.recommend_group") %></h4>
+    <% @recommend_groups.each do |group| %>
+      <%= image_tag group.image_url(:thumb) %>
+    <% end %>
+    </div>
+  </div>
+</div>

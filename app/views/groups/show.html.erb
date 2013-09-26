@@ -100,9 +100,9 @@
                                 </div>
                                 <div class="comment-meta">
                                   <span class="comment-timestamp">
-                                  <%= raw timeago(comment.created_at).concat t("comments.create") %>
+                                  <%= raw timeago(comment.created_at).concat t("comments.commented_at") %>
                                   <% if comment.user == current_user %>
-                                  , <%= link_to 'delete', topic_comment_path(topic, comment), remote: true, method: 'delete', data: { confirm: "Are you sure?" } %>
+                                    , <%= link_to t("common.delete"), topic_comment_path(topic, comment), remote: true, method: 'delete', data: { confirm: "Are you sure?" } %>
                               <% end %>
                                 </span>
                               </div>

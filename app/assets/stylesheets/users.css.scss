@@ -24,3 +24,42 @@
     font-size: 13px;
   }
 }
+
+.user-profile {
+  padding: 0;
+  .num {
+    text-align: right;
+  }
+  li {
+    list-style: none;
+  }
+  .base {
+    margin-bottom: 20px;
+  }
+  .user-avatar {
+    img {
+      width: 120px;
+    }
+  }
+
+  .user-details {
+     p {
+       font-size: 13px;
+     }
+     span {
+       color: #666;
+     }
+  }
+}
+
+.latest-info {
+  ul {
+    padding: 0;
+  }
+}
+
+.panel-default .panel-heading {
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+}

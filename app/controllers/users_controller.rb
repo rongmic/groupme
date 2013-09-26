@@ -12,6 +12,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @latest_groups = Group.latest_groups(@user)
+    @latest_topics = Topic.latest_topics(@user)
+  end
+
   private
     def user_params
       params.require(:user).permit(:avatar)

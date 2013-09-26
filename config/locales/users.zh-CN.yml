@@ -1,0 +1,4 @@
+"zh-CN":
+  users:
+    info: "个人资料"
+    rank: "第%{rank}位用户"

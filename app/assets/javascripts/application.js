@@ -23,7 +23,8 @@ var do_on_load = function() {
     placement: 'left',
     trigger: 'hover'
   });
-  jQuery("abbr.timeago").timeago();
+  $(".member-list img").tooltip();
+  $("abbr.timeago").timeago();
 }
 $(document).ready(do_on_load);
 $(window).bind('page:change', do_on_load);

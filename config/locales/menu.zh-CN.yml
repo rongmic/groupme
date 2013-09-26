@@ -7,6 +7,7 @@
     forget_password: "忘记了密码？"
     create_account: "创建新用户"
     create: "创建"
+    delete: "删除"
     search_group: "搜索小组"
     what: "Groupme是什么？"
     description: "它是一个根据小组着重于话题讨论的应用。"
@@ -15,6 +16,8 @@
     profile: "资料设置"
     new_password: "重置密码"
     update_profile: "更新资料"
+    latest_groups: "最新创建的小组"
+    latest_topics: "最新发布的主题"
     logout: "退出"
 
   menu:
