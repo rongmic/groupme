@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  scope :latest, -> { order('created_at desc').limit(8) }
+
   validates :username, presence: true
 
   def join!(group)

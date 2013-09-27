@@ -5,6 +5,8 @@
     group: "小组"
     new_group: "新建小组"
     topic: "话题"
+  sidebar:
+    latest_user: "最新用户"
   attributes:
     user:
       username: "用户名"

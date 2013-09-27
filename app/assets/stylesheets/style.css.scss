@@ -105,3 +105,16 @@ text-decoration: none;
     }
   }
 
+  .panel-list {
+    .l-topics {
+      li {
+        border-bottom: 1px solid #EEE;
+        padding: 4px 8px;
+      }
+    }
+    span {
+      color: #666;
+      font-size: 12px;
+    }
+  }
+
