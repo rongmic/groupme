@@ -1,5 +1,14 @@
-//$('<%# j render partial: 'shared/comment', locals: { comment: @comment } %>').appendTo('.comment-list').hide().fadeIn(1000);
 var topic_id = '<%= @comment.topic.id %>';
+$topic = $("#topic-comment-"+topic_id);
+
+if (!$topic.find("textarea").val().length > 0) {
+  $topic.find('textarea').parent().addClass('has-error');
+  return false;
+}
+
 $('#topic-comment-'+topic_id).closest('.topic-comments').find('.comment-list')
-    .append($('<%= j render 'shared/comment', comment: @comment %>').hide().fadeIn(1000));
+    .append($('<%= j render 'comments/comment', comment: @comment %>').hide().fadeIn(1000));
 $("abbr.timeago").timeago();
+$("#comment_content").val('');
+$topic.find('textarea').parent().removeClass('has-error');
+$topic.find('textarea').val('');

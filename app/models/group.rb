@@ -1,6 +1,12 @@
 class Group < ActiveRecord::Base
   # will_paginate config
   self.per_page = 8
+
+  IMAGE_SIZES = {
+    :default => [265, 177],
+    :mini => [146, 98]
+  }
+
   $recommend_count = 2
 
   belongs_to :category

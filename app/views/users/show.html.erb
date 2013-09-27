@@ -8,7 +8,7 @@
         <li>
           <div class="row base">
             <div class="col-md-2 user-avatar">
-              <%= image_tag @user.avatar_url(:thumb) %>
+              <%= image_tag user_avatar_path(@user, options: {size: :large}) %>
             </div>
             <div class="col-md-8 user-details">
               <p><span class="col-lg-2"><%= t("attributes.user.username") %></span><%= @user.username %></p>

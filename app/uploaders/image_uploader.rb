@@ -3,10 +3,11 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
+  before :cache, :setup_available_sizes
   storage :file
   # storage :fog
 
@@ -23,6 +24,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+
+  def default_url
+  end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -47,8 +51,32 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-  version :thumb do
-    process resize_to_limit: [265, 177]
+
+  process :dynamic_resize_to_fit => :default
+
+  [:large, :default, :thumb, :mini].each do |type|
+    version type do
+      process :dynamic_resize_to_fit => type
+    end
+  end
+
+  def dynamic_resize_to_fit(size)
+    resize_to_fit *(model.class::IMAGE_SIZES[size])
+  end
+
+  def method_missing(method, *args)
+    return false if method.to_s.match(/has_(.*)_size\?/)
+    super
+  end
+
+  protected
+
+  def setup_available_sizes(file)
+    model.class::IMAGE_SIZES.each do |key|
+      self.class_eval do
+        define_method("has_#{key}_size?".to_sym) { true }
+      end
+    end
   end
 
 end

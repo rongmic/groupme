@@ -25,6 +25,39 @@ var do_on_load = function() {
   });
   $(".member-list img").tooltip();
   $("abbr.timeago").timeago();
+
+  $("#new_topic").submit(function(){
+    if($("#topic_content").val() == "") {
+      $(this).parent().addClass('has-error');
+      return false;
+    }
+  });
+
+  $(".topic-reply a").click(function(){
+    var psconsole = $(".topics");
+    psconsole.scrollTop(
+        psconsole[0].scrollHeight - psconsole.height()
+    );
+  });
+
+  $("#new_group").submit(function(){
+    $title = $("#group_title");
+    $category = $("#group_category_id");
+    if(!$title.val().length > 0){
+      $title.parent().addClass('has-error');
+      return false;
+    }else{
+      $title.parent().removeClass('has-error');
+    }
+
+    if($category.val() == "") {
+      $category.parent().addClass('has-error');
+      return false;
+    }else{
+      $category.parent().removeClass('has-error');
+    }
+  });
 }
+
 $(document).ready(do_on_load);
 $(window).bind('page:change', do_on_load);

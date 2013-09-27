@@ -37,7 +37,7 @@ gem 'simple_form', git: 'git://github.com/plataformatec/simple_form.git'
 # Carrierwave for upload images
 gem 'carrierwave'
 
-gem 'rmagick'
+gem 'mini_magick'
 
 gem 'devise', '~> 3.0'
 

@@ -5,11 +5,8 @@ module UsersHelper
     gravatar_url
   end
 
-  def avatar_path(user)
-    if user.avatar.blank?
-      gravatar_for(user)
-    else
-      user.avatar_url(:thumb)
-    end
+  def user_avatar_path(user, options = {size: :thumb})
+    return gravatar_for(user, options[:size]) if user.avatar.blank?
+    user.avatar_url(options[:size])
   end
 end

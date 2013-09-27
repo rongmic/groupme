@@ -1,8 +1,8 @@
 <div class="sidebar-section">
   <h4><%= t('sidebar.latest_user') %></h4>
   <div class="member-list">
-<% @latest_users.each do |user| %>
-  <%= link_to(image_tag(avatar_path(user), title: user.username), user_path(user)) %>
-<% end %>
-</div>
+    <% @latest_users.each do |user| %>
+      <%= link_to(image_tag(user_avatar_path(user), title: user.username), user_path(user)) %>
+    <% end %>
+  </div>
 </div>

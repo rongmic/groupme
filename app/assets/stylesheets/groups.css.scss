@@ -7,6 +7,13 @@
     // margin-top: 20px;
   }
 }
+
+.group-content {
+  .thumbnail {
+    padding: 0;
+  }
+}
+
 .group-list {
   .group-box {
     margin-bottom: 10px;
@@ -44,6 +51,19 @@
 }
 
 #group-info {
+  blockquote {
+    border: none;
+    background: #D0E3F0;
+    color: #333;
+    p {
+      font-weight: normal;
+      font-size: 14px;
+    }
+    .btn-join {
+      text-align: center;
+    }
+  }
+
   .topic-form {
     margin-bottom: 30px;
   }

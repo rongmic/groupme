@@ -27,7 +27,7 @@
     <div class="sidebar-section">
       <h4><%= t("groups.recommend_group") %></h4>
     <% @recommend_groups.each do |group| %>
-      <%= image_tag group.image_url(:thumb) %>
+      <%= image_tag group_image_path(group, options: {size: :mini}) %>
     <% end %>
     </div>
   </div>

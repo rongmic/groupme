@@ -20,6 +20,8 @@
     latest_groups: "最新创建的小组"
     latest_topics: "最新发布的主题"
     empty: "暂无内容"
+    register_account: "注册新用户"
+    registering: "正在注册..."
     logout: "退出"
 
   menu:

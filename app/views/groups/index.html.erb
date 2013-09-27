@@ -19,7 +19,7 @@
       <div class="group-box col-md-3">
         <div class="thumbnail">
           <%= link_to group, title: group.title do %>
-            <%= image_tag group.image_url(:thumb) || 'default-group-cover.jpg' %>
+            <%= image_tag group_image_path(group) %>
           <% end %>
           <div class="content caption">
             <div class="group-title">

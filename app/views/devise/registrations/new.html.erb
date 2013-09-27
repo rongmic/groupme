@@ -1,7 +1,7 @@
 <div class="session-panel">
   <div class="row">
     <div class="col-lg-offset-4 col-md-4">
-      <h4><%=t("common.create_account") %></h4>
+      <h4><%=t("common.register_account") %></h4>
 
       <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), wrapper: :bootstrap, defaults: {input_html: {class: "form-control"}}) do |f| %>
         <%= f.error_notification %>
@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, t("common.create"), disable_with: "Creating your Account...", class: "btn btn-success" %>
+          <%= f.button :submit, t("common.register_account"), disable_with: t("common.registering"), class: "btn btn-success" %>
         </div>
       <% end %>
 

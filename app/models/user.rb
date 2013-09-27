@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  IMAGE_SIZES = {
+    :large => [110, 100],
+    :default => [64, 64],
+    :thumb => [48, 48],
+    :mini => [40, 40]
+  }
+
   has_many :groups
   has_many :topics
   has_many :group_users

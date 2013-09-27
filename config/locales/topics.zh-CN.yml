@@ -11,3 +11,4 @@
     delete: "删除"
     commented_at: "回复"
     create_comment: "添加评论"
+    submit: "正在提交..."

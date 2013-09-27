@@ -20,13 +20,13 @@
             <% end %>
           </div>
         <% else %>
-          <div class="alert alert-info">
-            <h4>Join “<%= @group.title %>” now and post!</h4>
-            <p>Join the group now to post things and reply to posts. Enjoy the convenience of browsing post archives easily, and get the full list of links that are ever posted in this group.</p>
-            <div class="">
-              <%= link_to "Join the group", join_group_path(@group), method: "post", class: "btn btn-primary btn-lg" %>
+          <blockquote>
+            <h4><%= t("groups.message_title", title: @group.title) %></h4>
+            <p><%=t ("groups.message_content") %></p>
+            <div class="btn-join">
+              <%= link_to t("groups.button_join"), join_group_path(@group), method: "post", class: "btn btn-success btn-lg" %>
             </div>
-          </div>
+          </blockquote>
         <% end %>
         <div class="topics">
           <% if @topics.any? %>

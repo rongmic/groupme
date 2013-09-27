@@ -53,10 +53,6 @@ abbr[title] {
 
 }
 
-.thumbnail {
-  padding: 0;
-}
-
 .form-horizontal .form-group {
   margin-left: 0;
   margin-right: 0;
@@ -110,6 +106,9 @@ text-decoration: none;
       li {
         border-bottom: 1px solid #EEE;
         padding: 4px 8px;
+        &:last-child {
+          border-bottom: 0;
+        }
       }
     }
     span {

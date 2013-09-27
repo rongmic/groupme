@@ -1,6 +1,6 @@
 <div class="sidebar-section">
   <h4><%= @group.title %></h4>
-  <%= image_tag @group.image_url(:thumb) %>
+  <%= image_tag group_image_path(@group) %>
 </div>
 <div class="sidebar-section">
   <h4><%= t("attributes.group.description") %></h4>
@@ -18,7 +18,7 @@
   <h4><%= t("attributes.group.member") %></h4>
   <div class="member-list clearfix">
     <% @group.members.each do |member| %>
-      <%= image_tag gravatar_for(member), title: member.username %>
+      <%= link_to(image_tag(user_avatar_path(member)), user_path(member), title: member.username) %>
     <% end %>
   </div>
 </div>
