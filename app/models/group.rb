@@ -3,7 +3,9 @@ class Group < ActiveRecord::Base
   self.per_page = 8
 
   IMAGE_SIZES = {
+    :large => [350, 300],
     :default => [265, 177],
+    :thumb => [250, 150],
     :mini => [146, 98]
   }
 
