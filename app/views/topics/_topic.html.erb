@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="topic" id="<%= dom_id topic %>">
       <div class="topic-avatar">
-        <%= link_to '', class: 'thumbnail' do %>
+        <%= link_to topic.user, class: 'thumbnail' do %>
           <%= image_tag user_avatar_path(topic.user) %>
         <% end %>
         <%= link_to topic.user.username, user_path(topic.user), class: 'topic-user' %>

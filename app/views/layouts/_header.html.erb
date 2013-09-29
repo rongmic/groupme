@@ -39,7 +39,7 @@
               <li><%= link_to t("common.dashboard"), user_path(current_user) %></li>
               <li role="presentation"><%= link_to t("common.profile"), edit_user_path(current_user) %></li>
               <li role="presentation" class="divider"></li>
-              <li role="presentation"><%= link_to t("common.logout"), destroy_user_session_path, method: :delete %></li>
+              <li role="presentation"><%= link_to t("common.logout"), destroy_user_session_path, method: :delete, :"data-no-turbolink" => true %></li>
             </ul>
           </li>
         <% else %>

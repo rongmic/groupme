@@ -6,7 +6,7 @@
       <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }, wrapper: :bootstrap, defaults: {label_html: {class: "col-lg-2"}, input_html: {class: "col-lg-10 form-control"}}) do |f| %>
         <%= f.error_notification %>
         <%= f.input :email, :required => true, :autofocus => true, label: t("attributes.user.email") %>
-        <%= f.button :submit, "Send me reset password instructions" %>
+        <%= f.button :submit, t("common.reset_password"), class: 'btn btn-success' %>
       <% end %>
       <div class="link">
         <%= render "devise/shared/links" %>

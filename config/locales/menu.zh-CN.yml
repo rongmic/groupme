@@ -22,6 +22,7 @@
     empty: "暂无内容"
     register_account: "注册新用户"
     registering: "正在注册..."
+    reset_password: "找回密码"
     logout: "退出"
 
   menu:

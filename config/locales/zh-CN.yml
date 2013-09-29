@@ -15,15 +15,15 @@
       password_confirmation: "确认密码"
       avatar: "头像"
       created_at: "注册时间"
+    group:
+      title: "小组名称"
+      category: "分类"
+      image: "logo"
+      member: "小组成员"
+      description: "描述"
+      rules: "规则"
   errors:
     models:
       user: "用户"
     messages:
       blank: "不能为空字符"
-    group:
-      title: "小组名称"
-      category: "分类"
-      image: "标志图片"
-      member: "小组成员"
-      description: "描述"
-      rules: "规则"

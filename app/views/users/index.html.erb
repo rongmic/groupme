@@ -1,3 +1,5 @@
+<div class="users">
 <% @users.each do |user| %>
-  <%= image_tag user_avatar_path(user, options: {size: :thumb}) %>
+  <%= link_to image_tag(user_avatar_path(user, options: {size: :thumb})), user %>
 <% end %>
+</div>

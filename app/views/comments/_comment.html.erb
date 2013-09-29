@@ -5,7 +5,7 @@
     <% end %>
   </div>
   <div class="comment-body">
-    <h4 class="comment-user"><%= link_to comment.user.username, '' %></h4>
+    <h4 class="comment-user"><%= link_to comment.user.username, comment.user %></h4>
     <div class="comment-content">
       <%= comment.content %>
     </div>
