@@ -23,6 +23,7 @@
     register_account: "注册新用户"
     registering: "正在注册..."
     reset_password: "找回密码"
+    login_required: "要先登录哦！"
     logout: "退出"
 
   menu:

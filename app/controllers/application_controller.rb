@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def login_required
     if current_user.blank?
-      flash[:success] = "Please Login"
+      flash[:message] = t("common.login_required")
       redirect_to new_user_session_path
     else
     end

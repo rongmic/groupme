@@ -6,9 +6,14 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to group_path @topic.group }
-        format.js
+        #format.js
+        #format.html { redirect_to group_path @topic.group }
+        @comments = Comment.latest
+        format.html { render partial: 'comments/comment', locals: {comment: @comment} }
+        format.json { render json: @comment }
+
       else
+        format.json { render json: "error" }
       end
     end
   end

@@ -57,6 +57,16 @@ var do_on_load = function() {
       $category.parent().removeClass('has-error');
     }
   });
+
+  $("#new_comment").on("ajax:success", function(e, data, status, xhr){
+    $(this).closest('.topic').find('.comment-list').append($(data).hide().fadeIn());
+    count = $(this).closest('.topic').find('.reply').data('count');
+    $(this).closest('.topic').find('.reply').data('count', count+1);
+    $(this).closest('.topic').find('.comments-count').text(count+1);
+    $(this).find("textarea").val("");
+    $("abbr.timeago").timeago();
+  });
+
 }
 
 $(document).ready(do_on_load);

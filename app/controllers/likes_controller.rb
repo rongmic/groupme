@@ -4,12 +4,12 @@ class LikesController < ApplicationController
 
   def create
     current_user.like(@topic)
-    render text: 1
+    render text: @topic.likers.count
   end
 
   def destroy
     current_user.dislike(@topic)
-    render text: 1
+    render text: @topic.likers.count
   end
 
   private
