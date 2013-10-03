@@ -25,6 +25,11 @@ class UsersController < ApplicationController
     @latest_users = User.latest
   end
 
+  def individual
+    @groups = current_user.groups
+    render :show
+  end
+
   private
     def user_params
       params.require(:user).permit(:avatar)

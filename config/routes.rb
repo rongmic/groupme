@@ -26,7 +26,11 @@ Groupme::Application.routes.draw do
   end
     resources :likes
 
-  resources :users
+  resources :users do
+    member do
+      get :individual
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
