@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+  <%= nav_link t("individual.group"), individual_user_path(current_user), "individual" %>
+  <%= nav_link t("individual.favourite"), favourites_user_path(current_user), 'favourites' %>
+  <%= nav_link t("individual.comment"), comments_user_path(current_user), 'comments' %>
+</ul>

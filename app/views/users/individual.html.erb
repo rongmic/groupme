@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-12 individual">
+    <%= render 'users/individual_nav' %>
+    <div class="tab-content">
+      <div class="tab-pane active">
+        <h3><%=t("individual.join") %></h3>
+        <%= render partial: 'groups/item', locals: {groups: current_user.participated_groups} %>
+        <h3><%=t("individual.own") %></h3>
+        <%= render partial: 'groups/item', locals: {groups:  current_user.groups } %>
+      </div>
+    </div>
+  </div>
+</div>

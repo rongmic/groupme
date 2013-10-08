@@ -1,0 +1,22 @@
+<div class="row group-list">
+  <div class="col-md-12">
+    <% groups.each do |group| %>
+      <div class="group-box col-md-3">
+        <div class="thumbnail">
+          <%= link_to group, title: group.title do %>
+            <%= image_tag group_image_path(group) %>
+          <% end %>
+          <div class="content caption">
+            <div class="group-title">
+              <h4 class="title-label"><%= link_to group.title, group %></h4>
+            </div>
+            <p class="group-description"><%= group.description %></p>
+            <div class="group-post-count clearfix">
+              <span class="label label-primary"><%= group.topics_count %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
