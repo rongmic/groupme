@@ -29,3 +29,9 @@
   menu:
     groups: "发现小组"
     create_group: "创建小组"
+  individual:
+    group: "我的小组"
+    favourite: "我喜欢的"
+    comment: "我的评论"
+    join: "我参与的小组"
+    own: "我创建的小组"

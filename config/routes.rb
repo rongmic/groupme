@@ -29,6 +29,8 @@ Groupme::Application.routes.draw do
   resources :users do
     member do
       get :individual
+      get :favourites
+      get :comments
     end
   end
 

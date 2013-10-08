@@ -27,7 +27,14 @@ class UsersController < ApplicationController
 
   def individual
     @groups = current_user.groups
-    render :show
+  end
+
+  def favourites
+    @favourite_topics = current_user.liked_topics
+  end
+
+  def comments
+    @comments = current_user.comments
   end
 
   private

@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   def index
     if params[:category_id].nil?
-      @groups = Group.paginate(page: params[:page]).order("created_at desc")
+      @groups = Group.search(params[:key]).paginate(page: params[:page]).order("created_at desc")
     else
       @category = Category.find(params[:category_id])
       @groups = @category.groups.paginate(page: params[:page]).order('created_at desc')

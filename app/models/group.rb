@@ -41,4 +41,8 @@ class Group < ActiveRecord::Base
   def self.latest_groups(user)
     user.groups.order('created_at desc').limit(10)
   end
+
+  def self.search(query)
+    Group.where("title LIKE ?", "%#{query}%")
+  end
 end

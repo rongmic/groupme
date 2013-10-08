@@ -25,10 +25,10 @@
         <li><%= link_to t("common.users"), users_path %></li>
         <li><a href="#"><%= t("common.what") %></a></li>
       </ul>
-      <form class="navbar-form">
+      <form class="navbar-form" action="/groups" method="get">
         <div class="input-group input-group-sm pull-left col-md-3">
           <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-          <input type="text" class="form-control" placeholder="<%=t("common.search_group")%>">
+          <input type="text" class="form-control" placeholder="<%=t("common.search_group")%>" name="key">
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
@@ -37,7 +37,9 @@
             <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
               <li><%= link_to t("common.dashboard"), user_path(current_user) %></li>
-              <li><%= link_to t("groups.individual"), individual_user_path(current_user) %></li>
+              <li><%= link_to t("individual.group"), individual_user_path(current_user) %></li>
+              <li><%= link_to t("individual.favourite"), favourites_user_path(current_user) %></li>
+              <li><%= link_to t("individual.comment"), comments_user_path(current_user) %></li>
               <li role="presentation"><%= link_to t("common.profile"), edit_user_path(current_user) %></li>
               <li role="presentation" class="divider"></li>
               <li role="presentation"><%= link_to t("common.logout"), destroy_user_session_path, method: :delete, :"data-no-turbolink" => true %></li>
