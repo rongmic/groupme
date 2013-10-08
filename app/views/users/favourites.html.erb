@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12 individual">
+    <%= render 'users/individual_nav' %>
+    <div class="tab-content">
+      <div class="tab-pane active">
+        <% @favourite_topics.each do |topic| %>
+          <%= topic.content %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
