@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :login_required, only: [:edit, :update]
+  before_action :login_required, only: [:edit, :update, :individual, :favourites, :comments]
 
   def index
     @users = User.all

@@ -66,3 +66,18 @@
   font-weight: bold;
   color: #666;
 }
+
+.favourite-topic {
+  margin-top: 20px;
+  a {
+    color: #333;
+  }
+  p.meta {
+    border-top: 1px dotted #EEE;
+    color: #AAA;
+    font-size: 12px;
+    text-align: right;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+}
